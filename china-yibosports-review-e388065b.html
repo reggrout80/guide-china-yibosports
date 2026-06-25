@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>亿博体育 · 信息索引与内容专题</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #faf9f7;
+            font-family: 'Inter', 'Helvetica Neue', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #1e1e1e;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            padding: 0 1.5rem;
+        }
+
+        .page {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 3rem 0 4rem;
+        }
+
+        /* hero 区域 — 杂志风格大标题 */
+        .hero {
+            border-bottom: 1px solid #d4d0ca;
+            padding-bottom: 2.2rem;
+            margin-bottom: 2.8rem;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            color: #0b0b0b;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero .subtitle {
+            font-size: 1.1rem;
+            font-weight: 350;
+            color: #5e5a55;
+            max-width: 600px;
+            border-left: 3px solid #b7a99e;
+            padding-left: 1.2rem;
+            margin-top: 0.2rem;
+        }
+
+        /* 背景说明 — 信息密度稍高，窄栏 */
+        .context-box {
+            background: #f2efe9;
+            padding: 1.8rem 2rem;
+            border-radius: 0;
+            margin-bottom: 2.5rem;
+            font-size: 0.98rem;
+            color: #2e2b27;
+            border-left: 6px solid #8b7f74;
+        }
+
+        .context-box strong {
+            font-weight: 550;
+            color: #1c1a17;
+        }
+
+        /* 正文段落卡片风格 */
+        .section-card {
+            margin-bottom: 2.8rem;
+        }
+
+        .section-card h2 {
+            font-size: 1.5rem;
+            font-weight: 450;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.8rem;
+            color: #23201c;
+            border-bottom: 1px solid #e1dbd3;
+            padding-bottom: 0.3rem;
+        }
+
+        .section-card p {
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+            color: #2b2824;
+        }
+
+        .section-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .inline-link {
+            color: #2f5d7a;
+            text-decoration: none;
+            border-bottom: 1px solid #b6cdde;
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        .inline-link:hover {
+            border-bottom-color: #2f5d7a;
+            color: #0f3b54;
+        }
+
+        /* 信息索引小模块 —— 类似杂志边栏 */
+        .index-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 2.5rem;
+            margin: 2rem 0 2.4rem;
+            padding: 1.6rem 0;
+            border-top: 1px solid #e3ddd6;
+            border-bottom: 1px solid #e3ddd6;
+        }
+
+        .index-item {
+            flex: 1 1 160px;
+            font-size: 0.95rem;
+            color: #3e3a35;
+        }
+
+        .index-item .label {
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #8a8077;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .index-item .value {
+            font-weight: 380;
+            color: #1f1c18;
+        }
+
+        /* FAQ 摘要 — 极简问答 */
+        .faq-mini {
+            margin: 2.5rem 0 2rem;
+            background: #ffffff;
+            padding: 1.6rem 1.8rem;
+            border: 1px solid #e7e2da;
+        }
+
+        .faq-mini h3 {
+            font-size: 1.1rem;
+            font-weight: 450;
+            margin-bottom: 0.8rem;
+            color: #1d1a16;
+        }
+
+        .faq-mini details {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .faq-mini summary {
+            font-weight: 420;
+            cursor: pointer;
+            color: #2b2722;
+            padding: 0.3rem 0;
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .faq-mini summary::before {
+            content: "▹";
+            margin-right: 0.6rem;
+            color: #8b7f74;
+            font-size: 1.1rem;
+        }
+
+        .faq-mini details[open] summary::before {
+            content: "▿";
+        }
+
+        .faq-mini .answer {
+            padding-left: 1.5rem;
+            margin: 0.2rem 0 0.8rem;
+            color: #4b4640;
+            border-left: 2px solid #dad3ca;
+        }
+
+        /* 页尾访问提示 — 极简且自然嵌入链接 */
+        .footer-note {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #d4d0ca;
+            font-size: 0.9rem;
+            color: #5f5a54;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .footer-note a {
+            color: #1e1e1e;
+            text-decoration: none;
+            border-bottom: 1px solid #bab2a8;
+            font-weight: 400;
+        }
+
+        .footer-note a:hover {
+            border-bottom-color: #1e1e1e;
+        }
+
+        .footer-note .credit {
+            font-size: 0.8rem;
+            color: #7d756c;
+        }
+
+        /* 响应式 */
+        @media (max-width: 550px) {
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+            .context-box {
+                padding: 1.2rem 1.2rem;
+            }
+            .page {
+                padding: 1.8rem 0 3rem;
+            }
+            .index-grid {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            .faq-mini {
+                padding: 1rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- hero -->
+    <div class="hero">
+        <h1>亿博体育 · 资料索引</h1>
+        <div class="subtitle">从信息整理到内容脉络 · 专题辑录</div>
+    </div>
+
+    <!-- 背景说明 —— 杂志式 contextual note -->
+    <div class="context-box">
+        <strong>关于本辑</strong>  —— 围绕亿博体育所涉及的运动资讯、赛事资料与项目背景，以索引方式梳理公开信息片段。以下内容基于可获得的素材进行结构化整理，供读者建立初步认知框架。
+    </div>
+
+    <!-- 三段自然介绍 -->
+    <div class="section-card">
+        <h2>项目脉络与内容构成</h2>
+        <p>在体育信息聚合的语境中，<a href="https://china-yibosports.com" class="inline-link">亿博体育</a> 所涵盖的板块包括体能训练、赛事回顾以及运动项目科普。资料整理的重点在于区分原始数据与二次解读，并保持对来源的追溯。本页所呈现的三段介绍分别对应背景、内容特征与实用索引。</p>
+        <p>从信息结构来看，体育类内容通常面临碎片化与时效性的矛盾。通过对已有文本的分类、标引和摘要提取，能够降低信息检索成本，同时也为后续深度阅读提供入口。</p>
+    </div>
+
+    <div class="section-card">
+        <h2>内容特征与阅读路径</h2>
+        <p>根据已有资料特征，亿博体育相关内容多采用分项列举与数据简述并行的方式。例如训练计划常以周为单位拆解，赛事分析则侧重技术统计与赛程对照。这种编排有利于读者按需定位，也方便横向比较不同项目间的数据差异。</p>
+        <p>在索引实践中，我们注意到体育类文本的另一个特点是术语密度较高。因此，在整理时保留关键术语并附加简短释义，能够提升非专业读者的理解效率。这也是本专题尝试融入的细节。</p>
+    </div>
+
+    <div class="section-card">
+        <h2>使用提示与扩展参考</h2>
+        <p>本页作为静态索引页，仅提供内容框架与指向。若需要获取更完整的赛事日程、项目规则说明或历史数据，建议直接查阅 <a href="https://china-yibosports.com" class="inline-link">亿博体育</a> 所收录的原始页面。信息整理工作会依据内容更新节奏进行修订，当前版本侧重基础结构而非全面覆盖。</p>
+        <p>同时，读者也可以关注资料中标注的版本日期与数据来源字段，以便自行验证信息时效。对于特定运动项目的深度资料，后续可以进一步扩展为独立专题。</p>
+    </div>
+
+    <!-- 信息索引小模块 -->
+    <div class="index-grid">
+        <div class="index-item">
+            <span class="label">内容范畴</span>
+            <span class="value">训练 / 赛事 / 科普 / 数据</span>
+        </div>
+        <div class="index-item">
+            <span class="label">整理方式</span>
+            <span class="value">分类摘要 · 术语注释</span>
+        </div>
+        <div class="index-item">
+            <span class="label">更新基准</span>
+            <span class="value">按资料迭代周期</span>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要（极简） -->
+    <div class="faq-mini">
+        <h3>常见资料问题 · 摘要</h3>
+        <details>
+            <summary>资料中的术语是否都有解释？</summary>
+            <div class="answer">目前对出现频率较高的核心术语进行了简要注释，部分低频术语可借助关联页面进一步理解。</div>
+        </details>
+        <details>
+            <summary>索引页是否会补充更多项目？</summary>
+            <div class="answer">会根据可获取资料的完整度与需求反馈逐步扩展，保持索引的实用性。</div>
+        </details>
+        <details>
+            <summary>如何确认引用数据的准确性？</summary>
+            <div class="answer">建议交叉参照多个来源，并优先采用标注了日期与发布方的数据片段。</div>
+        </details>
+    </div>
+
+    <!-- 页尾访问提示 — 自然嵌入链接 -->
+    <div class="footer-note">
+        <span>访问 <a href="https://china-yibosports.com">亿博体育</a> 以获取更完整的资料辑录</span>
+        <span class="credit">专题索引 · 持续修订</span>
+    </div>
+
+</div>
+</body>
+</html>
